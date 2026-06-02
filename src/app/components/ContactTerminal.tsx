@@ -1,7 +1,8 @@
 import { React } from "react";
 import { motion } from "motion/react";
-import { Send, Mail, Linkedin, Github, MapPin, Terminal } from "lucide-react";
+import { Send, Mail, Linkedin, Github, MapPin, Terminal, Loader2, AlertCircle } from "lucide-react";
 import { useState } from "react";
+import { useContactSubmit } from "../hooks/useContactSubmit";
 
 export default function ContactTerminal() {
   const [formData, setFormData] = useState({
@@ -9,15 +10,18 @@ export default function ContactTerminal() {
     email: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const { status, error, submit, reset } = useContactSubmit();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    await submit(formData);
+    // clear form after successful send
+    if (status !== "error") {
+      setTimeout(() => {
+        setFormData({ name: "", email: "", message: "" });
+        reset();
+      }, 4000);
+    }
   };
 
   return (
@@ -149,7 +153,7 @@ export default function ContactTerminal() {
                 </span>
               </div>
 
-              {submitted ? (
+              {status === "success" ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -158,9 +162,7 @@ export default function ContactTerminal() {
                   <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
                     <Send className="w-8 h-8 text-primary" />
                   </div>
-                  <p className="text-green-400 mb-2">
-                    Message sent successfully!
-                  </p>
+                  <p className="text-green-400 mb-2">Message sent successfully!</p>
                   <p className="text-muted-foreground text-sm">
                     I'll get back to you soon.
                   </p>
@@ -218,17 +220,29 @@ export default function ContactTerminal() {
                     />
                   </div>
 
+                  {status === "error" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-start gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs"
+                    >
+                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                      <span>Failed to send: {error}. Please email directly at ameypande2709@gmail.com</span>
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
-                    whileHover={{
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(0, 229, 255, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all"
+                    disabled={status === "sending"}
+                    whileHover={status !== "sending" ? { scale: 1.02, boxShadow: "0 0 30px rgba(0, 229, 255, 0.4)" } : {}}
+                    whileTap={status !== "sending" ? { scale: 0.98 } : {}}
+                    className="w-full px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-5 h-5" />
-                    Execute Command
+                    {status === "sending" ? (
+                      <><Loader2 className="w-5 h-5 animate-spin" /> Sending…</>
+                    ) : (
+                      <><Send className="w-5 h-5" /> Execute Command</>
+                    )}
                   </motion.button>
 
                   <p className="text-xs text-muted-foreground text-center mt-4">

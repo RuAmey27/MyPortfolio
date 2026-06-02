@@ -10,16 +10,10 @@ import {
 
 const nodes = [
   {
-    id: "polarion",
-    label: "Polarion",
-    icon: Database,
-    color: "from-cyan-400 to-primary",
-  },
-  {
-    id: "eventhub",
-    label: "Azure Event Hub",
-    icon: Cloud,
-    color: "from-primary to-secondary",
+    id: "teams",
+    label: "Microsoft Teams",
+    icon: MessageSquare,
+    color: "from-purple-400 to-primary",
   },
   {
     id: "middleware",
@@ -28,10 +22,16 @@ const nodes = [
     color: "from-secondary to-purple-400",
   },
   {
-    id: "teams",
-    label: "Microsoft Teams",
-    icon: MessageSquare,
-    color: "from-purple-400 to-primary",
+    id: "eventhub",
+    label: "Azure Event Hub",
+    icon: Cloud,
+    color: "from-primary to-secondary",
+  },
+  {
+    id: "polarion",
+    label: "Polarion",
+    icon: Database,
+    color: "from-cyan-400 to-primary",
   },
 ];
 

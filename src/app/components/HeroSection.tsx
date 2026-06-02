@@ -63,8 +63,8 @@ export default function HeroSection() {
           </p>
 
           <p className="text-base md:text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-            Building scalable enterprise software solutions connecting Siemens
-            Polarion ALM with Microsoft Teams through cloud-native architectures
+            Java &amp; .NET backend engineer building cloud-native integrations,
+            event-driven systems, and enterprise applications on Azure
           </p>
 
           <div className="flex items-center justify-center gap-3 mb-12 flex-wrap">
@@ -115,6 +115,19 @@ export default function HeroSection() {
             >
               Contact Me
             </motion.button>
+            <motion.a
+              href="/resume.pdf"
+              download="Amey_Pande_Resume.pdf"
+              whileHover={{
+                scale: 1.05,
+                borderColor: "rgba(0, 229, 255, 0.6)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-xl bg-card/50 border border-border backdrop-blur-xl text-foreground font-medium flex items-center gap-2 transition-all"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </motion.a>
           </div>
         </motion.div>
       </div>

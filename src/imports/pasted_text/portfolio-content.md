@@ -14,7 +14,7 @@ Software Engineer specializing in Enterprise Integrations, React, .NET, Azure, a
 
 TAGLINE
 
-Building scalable enterprise software solutions connecting Siemens Polarion ALM with Microsoft Teams through cloud-native architectures.
+Java & .NET backend engineer building cloud-native integrations, event-driven systems, and enterprise applications on Azure.
 
 CONTACT
 
@@ -35,7 +35,7 @@ Umarkhed, Maharashtra, India
 
 PORTFOLIO SUMMARY
 
-Software Engineer with hands-on experience building enterprise-grade solutions for Siemens DISW through Connecticus Technologies. Skilled in React, .NET Core, Azure Event Hubs, Microsoft Teams development, OAuth2, SSO, and cloud-native architectures. Passionate about building scalable systems, solving complex engineering problems, and creating seamless enterprise user experiences.
+Software Engineer with 1.5+ years of experience specializing in Java and .NET backend development, full-stack enterprise applications, and cloud-native integrations on Azure. Proven track record delivering production-grade systems for Fortune-500 clients. Passionate about clean architecture, event-driven design, and building backend systems that scale.
 
 HERO SECTION
 

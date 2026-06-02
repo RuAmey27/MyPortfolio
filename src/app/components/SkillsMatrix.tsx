@@ -10,33 +10,33 @@ import {
 } from "recharts";
 
 const skillsData = [
-  { skill: "React", value: 90, fullMark: 100, id: "react" },
-  { skill: ".NET Core", value: 88, fullMark: 100, id: "dotnet" },
-  { skill: "Azure", value: 85, fullMark: 100, id: "azure" },
-  { skill: "Java", value: 82, fullMark: 100, id: "java" },
-  { skill: "C#", value: 85, fullMark: 100, id: "csharp" },
-  { skill: "SQL", value: 80, fullMark: 100, id: "sql" },
+  { skill: "React", value: 3, fullMark: 5 },
+  { skill: ".NET Core", value: 4.5, fullMark: 5 },
+  { skill: "Azure", value: 3, fullMark: 5 },
+  { skill: "Java", value: 4.5, fullMark: 5 },
+  { skill: "C#", value: 4.5, fullMark: 5 },
+  { skill: "SQL", value: 4, fullMark: 5 },
 ];
 
 const skillsList = [
-  { category: "Languages", skills: ["Java", "C", "C#", "SQL", "JavaScript"] },
+  { category: "Languages", skills: ["Java", "C#", "C", "SQL", "JavaScript"] },
   {
     category: "Frameworks",
     skills: ["React", ".NET Core", "Spring Boot", "Fluent UI", "TeamsFx SDK"],
   },
   {
     category: "Cloud & DevOps",
-    skills: ["Azure Event Hubs", "AWS", "Docker", "Git", "OAuth2"],
+    skills: ["Azure Event Hubs", "Terraform", "Docker", "AWS", "Git", "OAuth2"],
   },
   { category: "Databases", skills: ["MySQL", "SQL Server"] },
   {
     category: "Concepts",
     skills: [
-      "Data Structures",
-      "OOP",
-      "System Design",
-      "Microservices",
       "Event-Driven Architecture",
+      "Microservices",
+      "System Design",
+      "OOP",
+      "Data Structures",
     ],
   },
 ];
@@ -76,8 +76,9 @@ export default function SkillsMatrix() {
                 />
                 <PolarRadiusAxis
                   angle={90}
-                  domain={[0, 100]}
-                  tick={{ fill: "rgba(255, 255, 255, 0.5)", fontSize: 12 }}
+                  domain={[0, 5]}
+                  tickCount={6}
+                  tick={{ fill: "rgba(255, 255, 255, 0.5)", fontSize: 11 }}
                 />
                 <Radar
                   name="Proficiency"
@@ -93,24 +94,22 @@ export default function SkillsMatrix() {
           </motion.div>
 
           {/* Skills List */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             {skillsList.map((category, index) => (
               <motion.div
                 key={category.category}
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="p-6 rounded-2xl bg-card/50 border border-border backdrop-blur-xl hover:border-primary/50 transition-all duration-300"
+                transition={{ delay: index * 0.08 + 0.2, duration: 0.6 }}
+                className="p-5 rounded-2xl bg-card/50 border border-border backdrop-blur-xl hover:border-primary/50 transition-all duration-300"
               >
-                <h3 className="text-lg font-bold mb-3 text-primary">
-                  {category.category}
-                </h3>
+                <h3 className="text-sm font-bold mb-2.5 text-primary">{category.category}</h3>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 rounded-lg bg-muted/50 border border-border text-sm text-foreground/80 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                      className="px-3 py-1 rounded-lg bg-muted/50 border border-border text-xs text-foreground/80 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
                     >
                       {skill}
                     </span>
