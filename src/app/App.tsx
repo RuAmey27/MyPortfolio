@@ -41,7 +41,7 @@ export default function App() {
         <footer className="py-8 border-t border-border/30">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <p className="text-muted-foreground text-sm">
-              © 2026 Amey Ananta Pande. Built with React, .NET Core & Azure.
+              © 2026 Amey Ananta Pande. Built with React, Tailwind CSS, and Vite.
             </p>
             <p className="text-muted-foreground text-xs mt-2">
               Software Engineer @ Connecticus Technologies | Siemens DISW
