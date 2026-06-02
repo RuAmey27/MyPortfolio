@@ -13,8 +13,8 @@ interface SubmitState {
   error: string | null;
 }
 
-const TELEGRAM_BOT_TOKEN = (import.meta as unknown as { env: Record<string, string> }).env.VITE_TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID   = (import.meta as unknown as { env: Record<string, string> }).env.VITE_TELEGRAM_CHAT_ID;
+const TELEGRAM_BOT_TOKEN = (import.meta as unknown as { env: Record<string, string> }).env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID   = (import.meta as unknown as { env: Record<string, string> }).env.TELEGRAM_CHAT_ID;
 
 async function sendViaTelegram(data: ContactFormData): Promise<void> {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
