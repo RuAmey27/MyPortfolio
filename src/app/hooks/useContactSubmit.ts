@@ -13,34 +13,21 @@ interface SubmitState {
   error: string | null;
 }
 
-const TELEGRAM_BOT_TOKEN = (import.meta as unknown as { env: Record<string, string> }).env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID   = (import.meta as unknown as { env: Record<string, string> }).env.TELEGRAM_CHAT_ID;
-
 async function sendViaTelegram(data: ContactFormData): Promise<void> {
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-    throw new Error("Telegram env vars not configured");
-  }
-  const text =
-    `📬 *New Portfolio Contact*\n\n` +
-    `👤 *Name:* ${data.name}\n` +
-    `📧 *Email:* ${data.email}\n\n` +
-    `💬 *Message:*\n${data.message}`;
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-  const res = await fetch(
-    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id:    TELEGRAM_CHAT_ID,
-        text,
-        parse_mode: "Markdown",
-      }),
-    }
-  );
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(`Telegram error ${res.status}: ${(body as { description?: string }).description ?? "unknown"}`);
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+
+    throw new Error(
+      error.error || "Failed to send message"
+    );
   }
 }
 
