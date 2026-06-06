@@ -54,7 +54,7 @@ const awards = [
   },
   {
     icon: Crown,
-    title: "Higher Secondary",
+    title: "HSC",
     year: "2021",
     organization: "Academic Achievement",
     description: "Scored 94.50% in HSC",
@@ -62,7 +62,7 @@ const awards = [
   },
   {
     icon: Medal,
-    title: "Secondary School",
+    title: "SSC",
     year: "2019",
     organization: "Academic Achievement",
     description: "Scored 90.40% in SSC",
