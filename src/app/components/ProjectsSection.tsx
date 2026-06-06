@@ -1,3 +1,4 @@
+import  React  from "react";
 import { motion } from "motion/react";
 import { Code2, ExternalLink, Globe } from "lucide-react";
 

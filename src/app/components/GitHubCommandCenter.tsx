@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "motion/react";
 import { Terminal, GitBranch, Star, Users, ExternalLink, GitMerge, GitCommitHorizontal, FolderGit2, Building2, Lock, Layers, BotMessageSquare, ShieldCheck, Workflow, Database } from "lucide-react";
 import { useState, useEffect } from "react";

@@ -1,4 +1,4 @@
-import { React } from "react";
+import  React  from "react";
 import { motion } from "motion/react";
 import { Download, Sparkles } from "lucide-react";
 

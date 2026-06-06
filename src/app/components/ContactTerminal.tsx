@@ -1,4 +1,4 @@
-import { React } from "react";
+import  React  from "react";
 import { motion } from "motion/react";
 import { Send, Mail, Linkedin, Github, MapPin, Terminal, Loader2, AlertCircle } from "lucide-react";
 import { useState } from "react";
