@@ -4,6 +4,13 @@ import { Code2, ExternalLink, Globe } from "lucide-react";
 
 const projects = [
   {
+    title: "Slack Data Search App",
+    tech: ["Spring Boot", "OpenSearch", "Kubernetes", "Docker", "Debian Linux", "HTML"],
+    description:
+      "Internal enterprise search application that indexes and queries Slack data using a containerized OpenSearch service. Deployed on a 3-node Debian Kubernetes cluster, the Spring Boot backend with HTML frontend is architected to handle 200 concurrent users as per production requirements.",
+    category: "Cloud / DevOps",
+  },
+  {
     title: "Ground Transport System",
     tech: ["Spring Boot", "React", "MySQL"],
     description:
